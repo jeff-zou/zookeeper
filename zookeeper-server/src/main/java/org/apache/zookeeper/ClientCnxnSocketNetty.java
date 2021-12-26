@@ -129,7 +129,7 @@ public class ClientCnxnSocketNetty extends ClientCnxnSocket {
         firstConnect = new CountDownLatch(1);
 
         Bootstrap bootstrap = new Bootstrap().group(eventLoopGroup)
-                                             .channel(NettyUtils.nioOrEpollSocketChannel())
+                                             .channel(NettyUtils.nioOrEpollSocketChannel()) //默认使用netty,如果没有epoll就使用nio
                                              .option(ChannelOption.SO_LINGER, -1)
                                              .option(ChannelOption.TCP_NODELAY, true)
                                              .handler(new ZKClientPipelineFactory(addr.getHostString(), addr.getPort()));
