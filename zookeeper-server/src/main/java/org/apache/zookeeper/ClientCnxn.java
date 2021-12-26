@@ -1111,6 +1111,7 @@ public class ClientCnxn {
             return paths;
         }
 
+        //发送心跳给服务器
         private void sendPing() {
             lastPingSentNs = System.nanoTime();
             RequestHeader h = new RequestHeader(ClientCnxn.PING_XID, OpCode.ping);
