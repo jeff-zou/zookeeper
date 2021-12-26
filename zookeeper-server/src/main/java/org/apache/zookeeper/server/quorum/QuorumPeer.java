@@ -1408,6 +1408,7 @@ public class QuorumPeer extends ZooKeeperThread implements QuorumStats.Provider 
 
     boolean shuttingDownLE = false;
 
+    //quorum模式启动
     @Override
     public void run() {
         updateThreadName();
@@ -1473,6 +1474,7 @@ public class QuorumPeer extends ZooKeeperThread implements QuorumStats.Provider 
                                     // lower-bound grace period to 2 secs
                                     sleep(Math.max(2000, tickTime));
                                     if (ServerState.LOOKING.equals(getPeerState())) {
+                                        //启动服务
                                         roZk.startup();
                                     }
                                 } catch (InterruptedException e) {
@@ -1487,8 +1489,10 @@ public class QuorumPeer extends ZooKeeperThread implements QuorumStats.Provider 
                             reconfigFlagClear();
                             if (shuttingDownLE) {
                                 shuttingDownLE = false;
+                                //开始选举
                                 startLeaderElection();
                             }
+                            //设置自己的选票
                             setCurrentVote(makeLEStrategy().lookForLeader());
                         } catch (Exception e) {
                             LOG.warn("Unexpected exception", e);

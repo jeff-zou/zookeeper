@@ -211,11 +211,12 @@ public class FinalRequestProcessor implements RequestProcessor {
 
             AuditHelper.addAuditLog(request, rc);
 
+            //将数据更新到node上
             switch (request.type) {
             case OpCode.ping: {
                 lastOp = "PING";
                 updateStats(request, lastOp, lastZxid);
-
+                //将结果响应发送出去
                 responseSize = cnxn.sendResponse(new ReplyHeader(ClientCnxn.PING_XID, lastZxid, 0), null, "response");
                 return;
             }

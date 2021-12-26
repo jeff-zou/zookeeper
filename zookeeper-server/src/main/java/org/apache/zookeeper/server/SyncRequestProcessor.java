@@ -270,6 +270,10 @@ public class SyncRequestProcessor extends ZooKeeperCriticalThread implements Req
         }
     }
 
+    /**
+     * 处理数据请求
+     * @param request
+     */
     public void processRequest(final Request request) {
         Objects.requireNonNull(request, "Request cannot be null");
 
