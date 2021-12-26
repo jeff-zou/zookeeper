@@ -2030,7 +2030,7 @@ public class ZooKeeper implements AutoCloseable {
      * The asynchronous version of getData.
      *
      * @throws IllegalStateException if watch this node with a null default watcher
-     *
+     * watch 处理watch请求
      * @see #getData(String, boolean, Stat)
      */
     public void getData(String path, boolean watch, DataCallback cb, Object ctx) {

@@ -491,6 +491,7 @@ public class ClientCnxn {
         private volatile boolean wasKilled = false;
         private volatile boolean isRunning = false;
 
+        //处理事件
         EventThread() {
             super(makeThreadName("-EventThread"));
             setDaemon(true);
