@@ -66,7 +66,7 @@ public class Follower extends Learner {
 
     /**
      * the main method called by the follower to follow the leader
-     *
+     * 收到来自leader的包
      * @throws InterruptedException
      */
     void followLeader() throws InterruptedException {
@@ -150,9 +150,11 @@ public class Follower extends Learner {
     }
 
     /**
+     * 响应具体的包内容
      * Examine the packet received in qp and dispatch based on its contents.
      * @param qp
      * @throws IOException
+     *
      */
     protected void processPacket(QuorumPacket qp) throws Exception {
         switch (qp.getType()) {
@@ -198,7 +200,7 @@ public class Follower extends Learner {
                 ServerMetrics.getMetrics().OM_PROPOSAL_PROCESS_TIME.add(Time.currentElapsedTime() - startTime);
             }
             break;
-        case Leader.COMMIT:
+        case Leader.COMMIT://处理commit请求
             ServerMetrics.getMetrics().LEARNER_COMMIT_RECEIVED_COUNT.add(1);
             fzk.commit(qp.getZxid());
             if (om != null) {

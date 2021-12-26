@@ -924,7 +924,7 @@ public class Leader extends LearnerMaster {
         }
 
         // in order to be committed, a proposal must be accepted by a quorum.
-        //
+        // 判断是否收到大多数的ack
         // getting a quorum from all necessary configurations.
         if (!p.hasAllQuorums()) {
             return false;
@@ -969,6 +969,7 @@ public class Leader extends LearnerMaster {
             // we're sending the designated leader, and if the leader is changing the followers are
             // responsible for closing the connection - this way we are sure that at least a majority of them
             // receive the commit message.
+            //发送commit命令
             commitAndActivate(zxid, designatedLeader);
             informAndActivate(p, designatedLeader);
         } else {
@@ -989,7 +990,7 @@ public class Leader extends LearnerMaster {
     /**
      * Keep a count of acks that are received by the leader for a particular
      * proposal
-     *
+     * 处理来自follower的ack
      * @param sid is the id of the server that sent the ack
      * @param zxid is the zxid of the proposal sent out
      * @param followerAddr

@@ -38,6 +38,7 @@ import org.slf4j.LoggerFactory;
 /**
  * This class manages watches. It allows watches to be associated with a string
  * and removes watchers and their watches in addition to managing triggers.
+ * server处理watch请求
  */
 public class WatchManager implements IWatchManager {
 

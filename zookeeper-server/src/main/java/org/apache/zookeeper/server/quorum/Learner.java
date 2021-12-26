@@ -344,6 +344,7 @@ public class Learner {
             }
         }
 
+        //使用jdk socket api
         if (socket.get() == null) {
             throw new IOException("Failed connect to " + multiAddr);
         } else {

@@ -107,6 +107,7 @@ public class DataTree {
 
     private IWatchManager dataWatches;
 
+    //watch
     private IWatchManager childWatches;
 
     /** cached total size of paths and data for all DataNodes */
