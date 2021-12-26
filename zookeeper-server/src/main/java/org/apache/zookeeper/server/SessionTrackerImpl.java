@@ -163,7 +163,7 @@ public class SessionTrackerImpl extends ZooKeeperCriticalThread implements Sessi
                     Thread.sleep(waitTime);
                     continue;
                 }
-
+                //删除过期session
                 for (SessionImpl s : sessionExpiryQueue.poll()) {
                     ServerMetrics.getMetrics().STALE_SESSIONS_EXPIRED.add(1);
                     setSessionClosing(s.sessionId);
