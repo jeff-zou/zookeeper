@@ -33,7 +33,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Most simple HostProvider, resolves on every next() call.
- *
+ * 提供zk服务器列表
  * Please be aware that although this class doesn't do any DNS caching, there're multiple levels of caching already
  * present across the stack like in JVM, OS level, hardware, etc. The best we could do here is to get the most recent
  * address from the underlying system which is considered up-to-date.

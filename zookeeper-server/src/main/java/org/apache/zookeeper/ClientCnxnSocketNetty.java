@@ -60,6 +60,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * 实际进行tcp连接通信
  * ClientCnxnSocketNetty implements ClientCnxnSocket abstract methods.
  * It's responsible for connecting to server, reading/writing network traffic and
  * being a layer between network data and higher level packets.
@@ -285,6 +286,7 @@ public class ClientCnxnSocketNetty extends ClientCnxnSocket {
                 throw new EndOfStreamException("channel for sessionid 0x" + Long.toHexString(sessionId) + " is lost");
             }
             if (head != null) {
+                //发送命令
                 doWrite(pendingQueue, head, cnxn);
             }
         } finally {

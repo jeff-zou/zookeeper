@@ -77,6 +77,9 @@ import org.apache.zookeeper.server.quorum.QuorumPeerConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * server netty
+ */
 public class NettyServerCnxnFactory extends ServerCnxnFactory {
 
     private static final Logger LOG = LoggerFactory.getLogger(NettyServerCnxnFactory.class);

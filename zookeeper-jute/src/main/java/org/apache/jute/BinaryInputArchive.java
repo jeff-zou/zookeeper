@@ -25,7 +25,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
 /**
- *
+ * 反序列化核心类
  */
 public class BinaryInputArchive implements InputArchive {
 

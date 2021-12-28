@@ -97,6 +97,7 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 
 /**
+ * 负责和多个zookeeper连接，并且处理rpc逻辑
  * This class manages the socket i/o for the client. ClientCnxn maintains a list
  * of available servers to connect to and "transparently" switches servers it is
  * connected to as needed.
@@ -873,6 +874,7 @@ public class ClientCnxn {
 
 
         void readResponse(ByteBuffer incomingBuffer) throws IOException {
+            //反序列化
             ByteBufferInputStream bbis = new ByteBufferInputStream(incomingBuffer);
             BinaryInputArchive bbia = BinaryInputArchive.getArchive(bbis);
             ReplyHeader replyHdr = new ReplyHeader();
